@@ -1,62 +1,112 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import ProjectCard from "@/components/ProjectCard";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { useI18n } from "@/i18n/I18nProvider";
 import { STATIC_PROJECTS } from "@/lib/projects-fallback";
 
-const FEATURED_PROJECTS = STATIC_PROJECTS.filter((project) => project.featured).slice(0, 3);
+const AUTO_TAB_DELAY = 3200;
 
 export default function SelectedWorks() {
   const { locale } = useI18n();
+  const [activeTab, setActiveTab] = useState(0);
 
   const copy = {
     eyebrow: locale === "bn" ? "নির্বাচিত কাজ" : "Selected Work",
     title:
       locale === "bn"
-        ? "যে ধরনের কাজ দেখে ক্লায়েন্টরা সিদ্ধান্ত নেয়।"
-        : "Proof that helps clients decide faster.",
+        ? "আমাদের তৈরি কাজগুলো এক নজরে দেখুন।"
+        : "See what our team has built.",
     description:
       locale === "bn"
-        ? "ই-কমার্স, ERP, CRM এবং গ্রোথ প্রজেক্টের কিছু নমুনা — যাতে আপনি আমাদের কাজের ধরন বুঝতে পারেন।"
-        : "A focused look at e-commerce, ERP, CRM, and growth projects so you can judge the shape and quality of our work.",
+        ? "ক্যাটাগরি বদলালে সেই কাজগুলোর ছবিই দেখাবে। চাইলে নিজে ট্যাব বেছে দেখুন, না হলে এটি নিজে নিজে বদলাবে।"
+        : "Explore real project visuals by category. Pick a tab or let the showcase move through each group automatically.",
     cta: locale === "bn" ? "সম্পূর্ণ পোর্টফোলিও দেখুন" : "View full portfolio",
   };
 
-  const projects = FEATURED_PROJECTS.map((project) => ({
-    ...project,
-    title: project.title[locale],
-    description: project.description[locale],
-  }));
+  const projects = useMemo(
+    () =>
+      STATIC_PROJECTS.filter((project) => project.image).map((project) => ({
+        ...project,
+        title: project.title[locale],
+        description: project.description[locale],
+      })),
+    [locale],
+  );
+
+  const tabs = useMemo(() => {
+    const categories = Array.from(new Set(projects.map((project) => project.category)));
+    return [
+      {
+        label: locale === "bn" ? "সব কাজ" : "All Work",
+        projects,
+      },
+      ...categories.map((category) => ({
+        label: category,
+        projects: projects.filter((project) => project.category === category),
+      })),
+    ].filter((tab) => tab.projects.length > 0);
+  }, [locale, projects]);
+
+  const active = tabs[activeTab] ?? tabs[0];
+  const visibleProjects = active?.projects.slice(0, 5) ?? [];
+
+  useEffect(() => {
+    if (tabs.length <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setActiveTab((current) => (current + 1) % tabs.length);
+    }, AUTO_TAB_DELAY);
+
+    return () => window.clearInterval(timer);
+  }, [tabs.length]);
+
+  useEffect(() => {
+    setActiveTab(0);
+  }, [locale]);
 
   return (
-    <section id="selected-work" className="bg-(--bg-soft) py-16 md:py-24">
-      <Container>
-        <Reveal variant="fade-up" className="mb-10 flex flex-col items-center gap-3 text-center md:mb-14">
-          <span className="inline-flex items-center rounded-full border border-(--border) bg-(--surface) px-3 py-1 text-sm font-medium text-(--brand-primary)">
-            {copy.eyebrow}
-          </span>
-          <h2 className="max-w-3xl text-[clamp(26px,4vw,42px)] font-bold leading-tight text-(--text)">
-            {copy.title}
-          </h2>
-          <p className="max-w-[68ch] text-[15px] leading-relaxed text-(--text-muted) md:text-[16px]">
-            {copy.description}
-          </p>
+    <section id="selected-work" className="selected-work-showcase">
+      <Container width="wide">
+        <Reveal variant="fade-up" className="selected-work-head">
+          <div>
+            <span className="selected-work-eyebrow">{copy.eyebrow}</span>
+            <h2 className="selected-work-title">{copy.title}</h2>
+          </div>
+          <p className="selected-work-desc">{copy.description}</p>
         </Reveal>
 
-        <Reveal variant="stagger" className="grid gap-6 md:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+        <Reveal variant="fade-up" className="selected-work-tabs" aria-label={copy.eyebrow}>
+          {tabs.map((tab, index) => (
+            <button
+              key={tab.label}
+              type="button"
+              className={`selected-work-tab ${activeTab === index ? "selected-work-tab-active" : ""}`}
+              aria-pressed={activeTab === index}
+              onClick={() => setActiveTab(index)}
+            >
+              {tab.label}
+            </button>
           ))}
         </Reveal>
 
-        <Reveal delay={0.12} className="mt-10 flex justify-center">
-          <Link
-            href="/portfolio"
-            className="inline-flex h-12 items-center justify-center rounded-full border border-(--border-strong) bg-(--surface) px-6 text-sm font-semibold text-(--text) transition hover:border-(--brand-primary)/50 hover:bg-(--brand-primary)/10 hover:text-(--brand-primary)"
-          >
+        <Reveal key={active?.label} variant="stagger" className="selected-work-gallery">
+          {visibleProjects.map((project) => (
+            <Link
+              key={project.slug}
+              href={`/portfolio/${project.slug}`}
+              className="selected-work-image-card"
+              aria-label={project.title}
+            >
+              <img src={project.image ?? ""} alt={project.title} />
+            </Link>
+          ))}
+        </Reveal>
+
+        <Reveal delay={0.12} className="selected-work-cta">
+          <Link href="/portfolio" className="selected-work-link">
             {copy.cta}
           </Link>
         </Reveal>

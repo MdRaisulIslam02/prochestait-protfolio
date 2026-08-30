@@ -39,7 +39,7 @@ export const messages: Record<Locale, MessageTree> = {
           "SEO & Digital Marketing|Social Media Management|Google & Facebook Ads|Website Solution|Ecommerce Solution|POS Solution|Custom Solution|Mobile App|HRM Solution",
       },
       title: {
-        line1Prefix: "Best Digital Marketing &",
+        line1Prefix: "",
         line1Highlight: "Software Development",
         line2Prefix: "Company in",
         line2Highlight: "Bangladesh",

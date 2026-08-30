@@ -573,7 +573,59 @@ section { padding: var(--s-8) 0; }
 /* ============================================
    Services
    ============================================ */
-.services-section { background: var(--bg); }
+.services-section {
+  background: var(--bg);
+  overflow: hidden;
+}
+.services-slider-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s-3);
+  margin-bottom: var(--s-7);
+}
+.services-slider-eyebrow {
+  color: var(--brand-primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+[data-theme="dark"] .services-slider-eyebrow {
+  color: var(--brand-accent-500);
+}
+.services-slider-title {
+  max-width: 920px;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(34px, 6vw, 76px);
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.services-slider-sub {
+  max-width: 680px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.services-slider-wrap {
+  margin-inline: calc(var(--s-5) * -1);
+  padding-inline: var(--s-5);
+}
+.services-swiper {
+  overflow: visible !important;
+  padding: 0 0 8px;
+}
+.services-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+.services-swiper .swiper-slide {
+  height: auto;
+}
 .service-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -585,6 +637,10 @@ section { padding: var(--s-8) 0; }
   gap: var(--s-3);
 }
 .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.service-slide-card {
+  min-height: 330px;
+  height: 100%;
+}
 .service-card h3 {
   font-size: 19px;
   font-weight: 600;
@@ -607,6 +663,175 @@ section { padding: var(--s-8) 0; }
 }
 [data-theme="dark"] .service-link { color: var(--brand-accent-500); }
 .service-link:hover { gap: 10px; }
+
+/* ============================================
+   Selected Work
+   ============================================ */
+.selected-work-showcase {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--brand-primary) 20%, transparent), transparent 28%),
+    linear-gradient(135deg, #100c22 0%, #090b13 46%, #08101e 100%);
+  color: #fff;
+  padding: var(--s-9) 0;
+}
+.selected-work-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+  align-items: start;
+  gap: var(--s-7);
+  margin-bottom: var(--s-7);
+}
+.selected-work-eyebrow {
+  display: block;
+  color: #9d96ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin-bottom: var(--s-4);
+}
+.selected-work-title {
+  max-width: 780px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(40px, 7vw, 78px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.selected-work-desc {
+  margin: 6px 0 0;
+  color: rgba(255,255,255,.72);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.selected-work-tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 0 var(--s-6);
+  scrollbar-width: none;
+}
+.selected-work-tabs::-webkit-scrollbar { display: none; }
+.selected-work-tab {
+  flex: 0 0 auto;
+  min-height: 42px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: rgba(255,255,255,.72);
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.selected-work-tab:hover {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+.selected-work-tab-active {
+  color: #0d1020;
+  background: #fff;
+  border-color: rgba(255,255,255,.9);
+}
+.selected-work-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  gap: var(--s-4);
+}
+.selected-work-image-card {
+  min-height: 330px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 20px 60px rgba(0,0,0,.24);
+  transition: transform .25s ease, border-color .25s ease;
+}
+.selected-work-image-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--brand-accent) 60%, white);
+}
+.selected-work-image-card img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+}
+.selected-work-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--s-7);
+}
+.selected-work-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  padding: 0 22px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .2s ease, border-color .2s ease;
+}
+.selected-work-link:hover {
+  border-color: rgba(255,255,255,.36);
+  background: rgba(255,255,255,.14);
+}
+@media (max-width: 1100px) {
+  .selected-work-gallery {
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+  }
+}
+@media (max-width: 820px) {
+  .selected-work-head {
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+    text-align: center;
+  }
+  .selected-work-desc {
+    margin-inline: auto;
+    max-width: 58ch;
+  }
+  .selected-work-tabs {
+    justify-content: flex-start;
+    margin-inline: calc(var(--s-5) * -1);
+    padding-inline: var(--s-5);
+  }
+  .selected-work-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: var(--s-3);
+    margin-inline: calc(var(--s-5) * -1);
+    padding-inline: var(--s-5);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .selected-work-gallery::-webkit-scrollbar { display: none; }
+  .selected-work-image-card {
+    flex: 0 0 72%;
+    min-height: 300px;
+    scroll-snap-align: center;
+  }
+}
+@media (max-width: 520px) {
+  .selected-work-showcase {
+    padding: var(--s-8) 0;
+  }
+  .selected-work-title {
+    font-size: clamp(34px, 12vw, 48px);
+  }
+  .selected-work-image-card {
+    flex-basis: 84%;
+    min-height: 270px;
+  }
+}
 
 /* ============================================
    Custom Solution Banner

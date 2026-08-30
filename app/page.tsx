@@ -1,6 +1,5 @@
 import Hero from '@/components/Hero'
 // import WhyUs from '@/components/WhyUs'
-import About from '@/components/About'
 import Services from '@/components/Services'
 import TechStack from '@/components/TechStack'
 import Features from '@/components/Features'
@@ -55,7 +54,6 @@ export default async function Home() {
     <main>
       <Hero />
       {/* <WhyUs /> */}
-      <About />
       <Services />
       <SelectedWorks />
       {/* <ClientResults /> */}
