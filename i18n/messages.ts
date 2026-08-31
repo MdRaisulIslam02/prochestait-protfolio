@@ -456,7 +456,7 @@ export const messages: Record<Locale, MessageTree> = {
       office: {
         title: "Office",
         address: {
-          line1: "House: 23, Road: 13,",
+          line1: "",
           line2: "Sector-10, Uttara,",
           line3: "Dhaka, Bangladesh",
         },
@@ -1230,9 +1230,9 @@ export const messages: Record<Locale, MessageTree> = {
       office: {
         title: "অফিস",
         address: {
-          line1: "বাড়ি: ২৩, রোড: ১৩,",
-          line2: "সেক্টর-১০, উত্তরা,",
-          line3: "ঢাকা, বাংলাদেশ",
+          line1: "",
+          line2: "Sector-10, Uttara,",
+          line3: "Dhaka, Bangladesh",
         },
         helpline: "হেল্পলাইন",
         emailLabel: "ইমেইল",

@@ -143,7 +143,7 @@ export default function Footer() {
                   />
                 </span>
                 <div className="footer-contact-body">
-                  <span>{t('footer.office.address.line1')} {t('footer.office.address.line2')}</span>
+                  <span>{t('footer.office.address.line2')}</span>
                   <span>{t('footer.office.address.line3')}</span>
                 </div>
               </div>
