@@ -42,6 +42,7 @@ const paths: Record<string, React.ReactNode> = {
   dot: <circle cx="12" cy="12" r="4" />,
   award: <><circle cx="12" cy="8" r="6" /><path d="M9 13l-2 9 5-3 5 3-2-9" /></>,
   play: <path d="M8 5v14l11-7-11-7z" />,
+  pause: <><path d="M8 5v14" /><path d="M16 5v14" /></>,
   arrow_right: <path d="M5 12h14M13 5l7 7-7 7" />,
   arrow_left: <path d="M19 12H5M11 19l-7-7 7-7" />,
   plus: <><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></>,
