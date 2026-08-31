@@ -166,7 +166,7 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               items: [
                 'Email: legal@prochestait.com',
                 'Phone: 01726-724300',
-                'Address: House 23, Road 13, Sector-10, Uttara, Dhaka-1230',
+                'Address: Sector-10, Uttara, Dhaka-1230',
               ],
             },
           ],
@@ -312,8 +312,8 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'ul',
               items: [
                 'ইমেইল: legal@prochestait.com',
-                'ফোন: ০১৭২৬-৭২৪৩০০',
-                'ঠিকানা: বাড়ি ২৩, রোড ১৩, সেক্টর-১০, উত্তরা, ঢাকা-১২৩০',
+                'ফোন: ০১৭০৮৫৯৭৫৬৬',
+                'ঠিকানা: সেক্টর-১০, উত্তরা, ঢাকা-১২৩০',
               ],
             },
           ],
@@ -420,7 +420,7 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'ul',
               items: [
                 'Email: support@prochestait.com',
-                'Phone / WhatsApp: 01726-724300',
+                'Phone / WhatsApp: 01708597566',
                 'Business hours: Saturday–Thursday, 9:00 AM – 7:00 PM BST',
               ],
             },
@@ -524,7 +524,7 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'ul',
               items: [
                 'ইমেইল: support@prochestait.com',
-                'ফোন / হোয়াটসঅ্যাপ: ০১৭২৬-৭২৪৩০০',
+                'ফোন / হোয়াটসঅ্যাপ: ০১৭০৮৫৯৭৫৬৬',
                 'অফিস সময়: শনিবার–বৃহস্পতিবার, সকাল ৯টা – সন্ধ্যা ৭টা',
               ],
             },
@@ -642,9 +642,9 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'table',
               headers: ['Channel', 'Contact', 'Best For'],
               rows: [
-                ['WhatsApp', '+880 1726-724300', 'Urgent issues & quick queries'],
+                ['WhatsApp', '+880 1708-597566', 'Urgent issues & quick queries'],
                 ['Email', 'support@prochestait.com', 'Bug reports & change requests'],
-                ['Phone', '01726-724300', 'Critical escalations'],
+                ['Phone', '01708597566', 'Critical escalations'],
               ],
             },
           ],
@@ -754,9 +754,9 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'table',
               headers: ['মাধ্যম', 'যোগাযোগ', 'সবচেয়ে ভালো ব্যবহার'],
               rows: [
-                ['হোয়াটসঅ্যাপ', '+৮৮০ ১৭২৬-৭২৪৩০০', 'জরুরি সমস্যা ও দ্রুত প্রশ্ন'],
+                ['হোয়াটসঅ্যাপ', '+৮৮০ ১৭০৮৫৯৭৫৬৬', 'জরুরি সমস্যা ও দ্রুত প্রশ্ন'],
                 ['ইমেইল', 'support@prochestait.com', 'বাগ রিপোর্ট ও পরিবর্তন অনুরোধ'],
-                ['ফোন', '০১৭২৬-৭২৪৩০০', 'ক্রিটিকাল এস্কেলেশন'],
+                ['ফোন', '০১৭০৮৫৯৭৫৬৬', 'ক্রিটিকাল এস্কেলেশন'],
               ],
             },
           ],
@@ -924,8 +924,8 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'ul',
               items: [
                 'Email: privacy@prochestait.com',
-                'Address: House 23, Road 13, Sector-10, Uttara, Dhaka-1230',
-                'Phone: 01726-724300',
+                'Address: Sector-10, Uttara, Dhaka-1230',
+                'Phone: 01708-597566',
               ],
             },
           ],
@@ -1082,8 +1082,8 @@ export const legalContent: Record<PageKey, Record<LegalLocale, LegalPageData>> =
               type: 'ul',
               items: [
                 'ইমেইল: privacy@prochestait.com',
-                'ঠিকানা: বাড়ি ২৩, রোড ১৩, সেক্টর-১০, উত্তরা, ঢাকা-১২৩০',
-                'ফোন: ০১৭২৬-৭২৪৩০০',
+                'ঠিকানা: সেক্টর-১০, উত্তরা, ঢাকা-১২৩০',
+                'ফোন: ০১৭০৮-৫৯৭৫৬৬',
               ],
             },
           ],

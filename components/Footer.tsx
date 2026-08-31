@@ -51,7 +51,7 @@ export default function Footer() {
             <p className="footer-tagline">{t('footer.brand.tagline')}</p>
             <div className="footer-socials">
               <a
-                href="https://www.facebook.com/prochestait/"
+                href="https://www.facebook.com/prochestait1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('footer.social.facebook')}>
@@ -61,7 +61,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="https://www.instagram.com/prochestait/"
+                href="https://www.instagram.com/prochestait1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('footer.social.instagram')}>
@@ -71,7 +71,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="https://www.linkedin.com/company/imjolofficial/"
+                href="https://www.linkedin.com/company/prochestait1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('footer.social.linkedin')}>
@@ -159,11 +159,11 @@ export default function Footer() {
                     {t('footer.office.helpline')}
                   </span>
                   <a
-                    href="https://wa.me/8801310799699"
+                    href="https://wa.me/8801708597566"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="footer-hotline">
-                    +8801310799699
+                    +8801708597566
                   </a>
                 </div>
               </div>
