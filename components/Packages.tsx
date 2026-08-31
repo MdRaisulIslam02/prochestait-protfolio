@@ -37,73 +37,74 @@ export default function Packages() {
   const closeQuoteModal = () => setSelectedPackage(null);
 
   return (
-    <section id="packages" className="relative py-16 lg:py-24 bg-(--surface-2)">
+    <section id="packages" className="packages-section">
       <div className="container">
-        <Reveal variant="fade-up" className="flex flex-col items-center text-center mb-12 lg:mb-16 gap-3">
-          <span className="inline-flex items-center rounded-full bg-(--brand-primary)/10 px-3 py-1 text-sm font-medium text-(--brand-primary)">
+        <Reveal variant="fade-up" className="packages-head">
+          <span className="packages-eyebrow">
             {t("packages.eyebrow")}
           </span>
-          <h2 className="text-[clamp(24px,4vw,38px)] font-bold leading-[1.15] tracking-tight text-(--text) max-w-2xl">
+          <h2 className="packages-title">
             {t("packages.title")}
           </h2>
-          <p className="max-w-[65ch] text-[15px] lg:text-[16px] leading-relaxed text-(--text-muted)">
+          <p className="packages-subtitle">
             {t("packages.description")}
           </p>
         </Reveal>
 
-        <Reveal variant="stagger" className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
+        <Reveal variant="stagger" className="packages-grid">
           {PACKAGES.map((p, i) => (
             <div
               key={i}
-              className={`relative flex flex-col rounded-2xl bg-(--surface) p-6 lg:p-8 transition-all duration-300 ${p.highlight ? 'border-2 border-[var(--pkg-accent)] shadow-[0_12px_40px_rgba(0,0,0,0.12)] scale-100 lg:scale-105 z-10' : 'border border-(--border) hover:border-(--border-strong) hover:shadow-xl mt-0 lg:mt-4'}`}
+              className={`pkg-card ${p.highlight ? 'pkg-card--featured' : ''}`}
               style={{ "--pkg-accent": p.accent } as React.CSSProperties}
             >
               {p.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--pkg-accent)] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
-                  ★ {t("packages.badges.mostPopular")}
+                <div className="pkg-flag">
+                  <Icon name="star" size={12} stroke={2.4} />
+                  {t("packages.badges.mostPopular")}
                 </div>
               )}
               
-              <div className="mb-6 border-b border-(--border) pb-6">
-                <span className="mb-3 inline-block rounded bg-[color-mix(in_oklab,var(--surface)_85%,var(--pkg-accent))] px-2.5 py-1 text-[12px] font-bold tracking-wide text-[var(--pkg-accent)]">
+              <div className="pkg-head">
+                <span className="pkg-tag">
                   {t(`packages.tiers.${p.k}.tag`)}
                 </span>
-                <h3 className="mb-2 text-2xl lg:text-3xl font-extrabold text-(--text)">{t(`packages.tiers.${p.k}.name`)}</h3>
-                <p className="text-[14px] leading-relaxed text-(--text-muted) min-h-[42px]">{t(`packages.tiers.${p.k}.desc`)}</p>
+                <h3 className="pkg-name">{t(`packages.tiers.${p.k}.name`)}</h3>
+                <p className="pkg-desc">{t(`packages.tiers.${p.k}.desc`)}</p>
               </div>
               
-              <div className="mb-8 flex flex-col gap-1">
-                <span className="text-[13px] font-semibold text-(--text-muted) uppercase tracking-wider">{t("packages.priceFrom")}</span>
-                <div className="flex items-baseline gap-1 text-(--text)">
-                  <span className="text-2xl font-bold">৳</span>
-                  <span className="text-4xl font-extrabold tracking-tight">{t(`packages.tiers.${p.k}.price`)}</span>
-                </div>
+              <div className="pkg-price">
+                <span className="pkg-price-from">{t("packages.priceFrom")}</span>
+                <strong>
+                  <span className="pkg-price-tk">৳</span>
+                  <span className="pkg-price-num">{t(`packages.tiers.${p.k}.price`)}</span>
+                </strong>
               </div>
               
-              <ul className="mb-8 flex flex-col gap-3.5 flex-1">
+              <ul className="pkg-features">
                 {p.featureKeys.map((key, j) => (
-                  <li key={j} className="flex items-start gap-3 text-[14.5px] text-(--text)">
-                    <div className="mt-0.5 shrink-0 rounded-full bg-[var(--pkg-accent)] p-[3px] text-white shadow-sm">
+                  <li key={j}>
+                    <span className="pkg-check">
                       <Icon name="check" size={10} stroke={3} />
-                    </div>
-                    <span className="leading-snug">{t(`packages.tiers.${p.k}.features.${key}`)}</span>
+                    </span>
+                    <span>{t(`packages.tiers.${p.k}.features.${key}`)}</span>
                   </li>
                 ))}
                 {p.excludeKeys.map((key, j) => (
-                  <li key={"x" + j} className="flex items-start gap-3 text-[14.5px] text-(--text-muted) opacity-60">
-                    <div className="mt-0.5 shrink-0 text-(--text-muted)">
+                  <li key={"x" + j} className="pkg-excl">
+                    <span className="pkg-x">
                       <Icon name="x" size={14} stroke={2.5} />
-                    </div>
-                    <span className="leading-snug line-through decoration-(--border-strong)">{t(`packages.tiers.${p.k}.excludes.${key}`)}</span>
+                    </span>
+                    <span>{t(`packages.tiers.${p.k}.excludes.${key}`)}</span>
                   </li>
                 ))}
               </ul>
               
-              <div className="mt-auto">
+              <div className="pkg-action">
                 <button
                   type="button"
                   onClick={() => setSelectedPackage(t(`packages.tiers.${p.k}.name`))}
-                  className={`flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3.5 text-[15px] font-bold transition-all duration-300 ${p.highlight ? 'bg-[var(--pkg-accent)] text-white hover:opacity-90 shadow-lg hover:shadow-xl hover:-translate-y-0.5' : 'bg-(--surface-2) text-(--text) hover:bg-[var(--pkg-accent)] hover:text-white'}`}
+                  className="pkg-quote-btn"
                 >
                   {t("packages.cta.getQuote")} <Icon name="arrow_right" size={16} />
                 </button>
@@ -112,7 +113,7 @@ export default function Packages() {
           ))}
         </Reveal>
 
-        <Reveal delay={0.2} className="mt-12 flex items-center justify-center gap-2 text-sm text-(--text-muted)">
+        <Reveal delay={0.2} className="pkg-foot">
           <span className="font-mono">{t("packages.foot.needDifferent")}</span>
           <a href="#contact" className="inline-flex items-center gap-1 font-semibold text-(--brand-primary) hover:underline">
             {t("packages.foot.customPackage")} <Icon name="arrow_right" size={14} />
